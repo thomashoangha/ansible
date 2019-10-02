@@ -1,0 +1,31 @@
+- name: MongoDB Ensure repo file exists
+  copy:
+    content: ""
+    dest: /etc/yum.repos.d/mongodb-org-4.2.repo
+    force: no
+    group: root
+    owner: root
+    mode: 
+  
+
+- name: MongoDB Add Repo
+  yum_repository:
+    name: MongoDB Repository
+    description: MongoDB Repository
+    reposdir: '/etc/yum.repos.d'
+    file: mongodb-org-4.2
+    baseurl: 'https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.2/x86_64/'
+    gpgcheck: yes
+    gpgkey: 'https://www.mongodb.org/static/pgp/server-4.2.asc'
+    state: present
+
+- name: MongoDB Install MongoDB
+  yum:
+    name: mongodb-org
+    state: present
+    update_cache: yes
+
+- name: MongoDB Running State
+  service:
+    name: mongod
+    state: started

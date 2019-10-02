@@ -1,0 +1,9 @@
+- name: Pushpin add repo
+  yum: 
+    name: https://dl.bintray.com/fanout/rpm/centos7/fanout-repo-el7-1-1.x86_64.rpm
+    lock_timeout: 180
+
+- name: Pushpin install pushpin
+  yum:
+    name: pushpin
+    lock_timeout: 180
