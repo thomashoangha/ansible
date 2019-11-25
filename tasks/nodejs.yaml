@@ -4,15 +4,9 @@
     lock_timeout: 180
 
 - name: Node.js Get Script
-  uri:
-    url: https://rpm.nodesource.com/setup_12.x
+  raw: curl https://rpm.nodesource.com/setup_12.x | bash -
 
-- name: Node.js Install node.js
-  yum: 
-    name: ['gcc-c++', 'nodejs']
+- name: Install Node.JS
+  yum:
+    name: ['gcc-c++', 'make', 'nodejs']
     lock_timeout: 180
-
-- name: Node.js Install Express.js
-  npm:
-    name: express
-    global: yes

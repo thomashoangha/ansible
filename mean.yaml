@@ -7,6 +7,6 @@
     var_node: /tmp
   tasks:
     - include: tasks/prerequisites.yaml
-    - include: tasks/mongodb.yaml
     - include: tasks/nodejs.yaml
-    - include: tasks/pushpin.yaml
+    - include: tasks/feathersjs.yaml
+    - include: tasks/forever.yaml

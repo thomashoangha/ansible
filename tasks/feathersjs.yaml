@@ -1,0 +1,34 @@
+- name: Make Icecream App Directory
+  file:
+    path: /home/ec2-user/icecream
+    state: directory
+
+- name: Git Pull Repo
+  git:
+    repo: "https://github.com/thomashoangha/icecream.git"
+    dest: /home/ec2-user/icecream
+    force: yes
+
+- name: FeathersJS Install FeathersJS
+  npm:
+    name: "@feathersjs/feathers"
+    path: /home/ec2-user/icecream
+
+- name: FeathersJS Install Express
+  npm:
+    name: "@feathersjs/express"
+    path: /home/ec2-user/icecream
+
+- name: FeathersJS Install Socket.io
+  npm:
+    name: "@feathersjs/socketio"
+    path: /home/ec2-user/icecream
+
+- name: FeathersJS Install MomentJS
+  npm:
+    name: moment
+    path: /home/ec2-user/icecream
+
+- name: Set Timezone to EDT
+  timezone:
+    name: America/New_York

@@ -1,0 +1,13 @@
+- name: Forever Install
+  npm:
+    name: forever
+    global: yes
+
+- name: Forever List
+  command: forever list
+  register: forever_list
+  changed_when: false
+
+- name: Start FeathersJS Server
+  command: forever start /home/ec2-user/icecream/app.js
+  when: "forever_list.stdout.find('/home/ec2-user/icecream/app.js') == -1" 
